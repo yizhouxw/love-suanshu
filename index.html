@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#286451">
+  <meta name="description" content="小禾算术：按年级与学期练习算术，随机视算、专注计时、趣味闯关。纯前端，无需登录。">
+  <title>小禾算术 · 每天一点，算出成长</title>
+  <link rel="icon" href="assets/buddy.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="src/styles.css">
+  <script defer src="src/curriculum.js"></script>
+  <script defer src="src/math.js"></script>
+  <script defer src="src/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <aside class="sidebar">
+    <a class="brand" href="#home" aria-label="小禾算术首页"><span class="brand-mark">禾<span>+</span></span><span>小禾算术<small>LITTLE STEPS, BIG GROWTH</small></span></a>
+    <div class="side-label">我的学习空间</div>
+    <nav aria-label="主要导航">
+      <button class="nav-item active" data-page="home"><span data-icon="home"></span>学习首页<span class="nav-dot"></span></button>
+      <button class="nav-item" data-page="practice"><span data-icon="book"></span>视算练习</button>
+      <button class="nav-item" data-page="game"><span data-icon="game"></span>趣味闯关<span class="new-tag">FUN</span></button>
+      <button class="nav-item" data-page="mistakes"><span data-icon="pencil"></span>我的错题<span id="mistake-badge" class="count-tag">0</span></button>
+      <button class="nav-item" data-page="progress"><span data-icon="chart"></span>成长记录</button>
+    </nav>
+    <div class="side-garden"><span class="sprout">♧</span><strong>每一次思考<br>都在悄悄长大</strong><p>慢慢来，你会越来越棒。</p><div class="garden-art"><i></i><i></i><i></i></div></div>
+    <button class="nav-item source-nav" data-page="sources"><span data-icon="info"></span>课程与资源</button>
+    <div class="local-note"><span class="status-dot"></span>学习记录仅保存在此浏览器</div>
+  </aside>
+  <div class="app-shell">
+    <header class="topbar"><div class="breadcrumb">我的学习空间 <span>/</span> <strong id="breadcrumb">学习首页</strong></div><div class="top-actions"><span class="edition-label">人教版专题参考</span><button class="sound-toggle icon-button" id="sound-toggle" aria-label="关闭提示音" title="关闭提示音"></button><span class="avatar" aria-label="小小探索家">禾</span></div></header>
+    <main id="main" tabindex="-1">
+      <section class="page-intro"><div><div class="eyebrow">一点一滴，积累数学的力量</div><h1 id="page-title">今天，也一起进步吧 <span class="wave">☀</span></h1><p id="page-description">让每一个小小的答案，成为成长的大大一步。</p></div><div class="date-chip" id="date-chip"></div></section>
+      <section class="class-picker" aria-label="选择年级和学期"><span class="picker-label"><span data-icon="book"></span>我的课程</span><div class="grade-tabs" id="grade-tabs" aria-label="年级"></div><div class="term-tabs" id="term-tabs" aria-label="学期"><button data-term="1">上学期</button><button data-term="2">下学期</button></div></section>
+      <div id="storage-warning" class="notice" hidden>浏览器存储不可用，本次仍可练习，关闭页面后记录将无法保留。</div>
+      <div id="page-content"></div>
+      <footer class="page-footer"><span>小禾算术 · 每天一点，算出成长</span><button data-page="sources">课程依据与版本说明 <span>↗</span></button></footer>
+    </main>
+  </div>
+  <dialog id="setup-dialog" class="setup-dialog"><form id="setup-form"><div class="dialog-heading"><div><span class="eyebrow">准备好，开启今天的小进步</span><h2 id="setup-title">设置视算练习</h2></div><button class="close-button" type="button" data-close="setup-dialog" aria-label="关闭">×</button></div><label class="field-label" for="topic-select">练习专题</label><select id="topic-select"></select><div class="setup-columns"><div><label class="field-label" for="question-count">每组题量</label><select id="question-count"><option value="10">10 题 · 轻松热身</option><option value="20" selected>20 题 · 每日练习</option><option value="40">40 题 · 熟练巩固</option><option value="60">60 题 · 进阶练习</option><option value="100">100 题 · 批量练习</option></select></div><div><label class="field-label" for="duration">专注时长 <strong id="duration-label">10 分钟</strong></label><input id="duration" type="range" min="10" max="30" step="1" value="10"><div class="range-labels"><span>10 分钟</span><span>30 分钟</span></div></div></div><div class="setup-tip"><span data-icon="clock"></span><p>到时自动收卷，并弹出休息提醒。可以暂停，也可以提前交卷。题目较少时可能重复。</p></div><div class="preview-box"><div class="section-top"><span>随机题目预览</span><button type="button" class="text-button" id="refresh-preview">↻ 换一组</button></div><div id="question-preview"></div></div><div class="dialog-actions"><button type="button" class="secondary-button" id="print-sheet"><span data-icon="print"></span>打印练习单</button><button class="primary-button" type="submit">开始练习 <span>→</span></button></div></form></dialog>
+  <dialog id="session-dialog" class="session-dialog" aria-labelledby="session-title"><div class="session-header"><div><span class="eyebrow" id="session-mode">专注视算</span><h2 id="session-title"></h2></div><div class="session-controls"><span class="timer" id="timer" role="timer">10:00</span><button class="secondary-button small" id="pause-session">暂停</button><button class="icon-button" id="leave-session" aria-label="结束并交卷" title="结束并交卷">×</button></div></div><div class="session-progress"><span id="answer-progress">已填写 0 / 20</span><span>认真思考，比速度更重要</span></div><div id="session-body"></div><div class="session-footer"><span id="session-help">输入答案后按 Enter 跳到下一题</span><button class="primary-button" id="finish-session">完成并交卷 <span>✓</span></button></div></dialog>
+  <dialog id="result-dialog" class="result-dialog" aria-labelledby="result-title"><div class="result-illustration">✦</div><span class="eyebrow" id="result-eyebrow">每一次练习，都有收获</span><h2 id="result-title">今天的进步，值得一颗星！</h2><p id="result-message"></p><div id="result-stats" class="result-stats"></div><div id="result-review"></div><div class="dialog-actions"><button class="secondary-button" id="result-close">返回学习空间</button><button class="primary-button" id="result-retry">再练一组 →</button></div></dialog>
+  <div class="toast" id="toast" role="status" hidden></div>
+  <section id="print-area" aria-label="打印练习单"></section>
+</body>
+</html>
