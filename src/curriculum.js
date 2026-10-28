@@ -45,7 +45,7 @@
     ] },
     { grade: 4, term: 2, edition: '衔接建议，待新版下册核对', status: '建议专题 · 待核', provisional: true, extra: '图形与统计专题请结合学校课本安排', topics: [
       topic('4b-div', '除数是两位数的除法', '练习试商，本应用先提供整除题。', 'divide', { minD: 10, maxD: 99, maxQ: 99 }, '起步巩固'),
-      topic('4b-mixed', '四则运算与括号', '观察运算顺序，逐步计算。', 'mixed', { large: true }),
+      topic('4b-mixed', '两步加乘与括号', '练习加法与乘法的两步运算，包含小括号。', 'mixed', { large: true }),
       topic('4b-dec', '小数加减法', '把小数点对齐，再按位相加减。', 'decimal', { digits: 2, operation: 'addsub' }, '应用提升')
     ] },
     { grade: 5, term: 1, edition: '2026 秋修订线索', status: '参考新版目录', extra: '观察简单组合体；图形的运动；用字母表示数量关系；多边形面积；可能性', topics: [
@@ -54,9 +54,9 @@
       topic('5a-area', '三角形与梯形面积', '找到底和高，记得最后除以2。', 'polygon', {}, '应用提升')
     ] },
     { grade: 5, term: 2, edition: '衔接建议，待新版下册核对', status: '建议专题 · 待核', provisional: true, extra: '分数意义、因数与倍数等请按实际教材进度选练', topics: [
-      topic('5b-factor', '因数与倍数', '寻找两个数的最大公因数或最小公倍数。', 'factor', {}, '起步巩固'),
+      topic('5b-factor', '最大公因数与最小公倍数', '练习2～30两数的最大公因数或最小公倍数。', 'factor', {}, '起步巩固'),
       topic('5b-fsame', '同分母分数加减', '回顾分数单位，巩固基本计算。', 'fraction', { same: true }),
-      topic('5b-fdiff', '异分母分数加减', '先通分，再计算，最后约分。', 'fraction', {}, '应用提升')
+      topic('5b-fdiff', '分数加减（含异分母）', '先通分，再计算、约分；随机题也可能同分母。', 'fraction', {}, '应用提升')
     ] },
     { grade: 6, term: 1, edition: '2026 秋修订线索', status: '参考新版目录', extra: '确定位置；圆；生活中的负数；综合实践', topics: [
       topic('6a-fmul', '分数乘法', '分子相乘、分母相乘，可以先约分。', 'fraction', { operation: 'multiply' }, '起步巩固'),
@@ -64,12 +64,13 @@
       topic('6a-percent', '百分数', '理解百分之几，求一个数的百分之几。', 'percent', {}, '应用提升')
     ] },
     { grade: 6, term: 2, edition: '衔接建议，待新版下册核对', status: '建议专题 · 待核', provisional: true, extra: '圆柱、圆锥等空间内容不在当前算术练习范围内', topics: [
-      topic('6b-ratio', '比与比例', '在相等的比中，找到缺少的那个数。', 'ratio', {}, '起步巩固'),
-      topic('6b-percent', '折扣与百分数应用', '联系购物场景，算一算实际价格。', 'discount'),
-      topic('6b-review', '小学算术综合复习', '整数、小数和分数，轮换练一练。', 'review', {}, '应用提升')
+      topic('6b-ratio', '相等比填空', '在相等的比中填前项；暂不含正反比例应用。', 'ratio', {}, '起步巩固'),
+      topic('6b-percent', '折扣求现价', '按五至九折求现价；暂不含成数、税率与利率。', 'discount'),
+      topic('6b-review', '整数两步与小数、分数加减复习', '轮换练习两步加乘、小数加减和分数加减。', 'review', {}, '应用提升')
     ] }
   ];
   const sources = [
+    { title: '人教社 · 小学数学新教材简介', tag: '官方编写说明', url: 'https://www.pep.com.cn/xw/zt/hd/12/xjcjs/xx/202409/t20240920_1995566.html', note: '说明新版结构与编写思路，未提供四至六年级新版下册完整目录；不能据此确认专题顺序。' },
     { title: '教育部 · 义务教育数学课程标准（2022年版）', tag: '官方课标', url: 'https://www.moe.gov.cn/srcsite/A26/s8001/202204/t20220420_619921.html', note: '作为学段与“数与代数”能力划分的基础；课标不等同于每学期教学进度。' },
     { title: '国家中小学智慧教育平台', tag: '官方资源', url: 'https://basic.smartedu.cn/', note: '查阅实际电子教材和课程资源；使用时选择人教版及相应年级、册次。部分资源可能需要登录。' },
     { title: '芜湖市教育局 · 2026秋教材目录更新通报', tag: '版本核验', url: 'https://jyj.wuhu.gov.cn/xwzx/tzgg/8953250.html', note: '确认四、五、六年级上册2026年新编版本已有目录变化，不沿用旧版整套目录。' },
@@ -82,7 +83,7 @@
     { title: '点读宝 · 五年级上册2026目录', tag: '第三方目录', url: 'https://www.ai2book.com/diandu/book/45884', note: '核对小数乘除法及多边形面积；新版用字母表示数不直接等同于旧版简易方程。' },
     { title: '六年级上册2026教师用书介绍', tag: '第三方参考', url: 'https://www.sohu.com/a/1090474759_120904083', note: '参考分数乘法、分数除法、百分数专题范围。' }
   ];
-  const data = { books, sources, gradeNames: ['一', '二', '三', '四', '五', '六'], researchedAt: '2026-10-25' };
+  const data = { books, sources, gradeNames: ['一', '二', '三', '四', '五', '六'], researchedAt: '2026-10-28' };
   root.Curriculum = data;
   if (typeof module !== 'undefined') module.exports = data;
 })(typeof window !== 'undefined' ? window : globalThis);
